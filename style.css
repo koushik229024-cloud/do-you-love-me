@@ -267,3 +267,23 @@ button:hover {
     opacity: 0;
   }
 }
+.final-love {
+  margin-top: 30px;
+  font-size: 38px;
+  font-weight: bold;
+  color: white;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(255, 100, 180, 0.8);
+  animation: finalLove 1.4s ease-in-out infinite;
+}
+
+@keyframes finalLove {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
