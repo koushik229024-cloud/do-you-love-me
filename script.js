@@ -8,55 +8,86 @@ noBtn.addEventListener("click", () => {
   const maxX = window.innerWidth - noBtn.offsetWidth - 20;
   const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const x = Math.max(10, Math.random() * maxX);
+  const y = Math.max(10, Math.random() * maxY);
 
   noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 });
 
-// Yes button ❤️
+// Yes ❤️
 yesBtn.addEventListener("click", () => {
   mainBox.style.display = "none";
-  loveLetter.style.display = "block";
 
-  createHearts();
+  romanticCelebration();
+
+  setTimeout(() => {
+    loveLetter.style.display = "block";
+  }, 1800);
 });
 
-// Floating hearts 💖
-function createHearts() {
-  for (let i = 0; i < 25; i++) {
+// Romantic celebration 💖
+function romanticCelebration() {
+  document.body.classList.add("romantic");
+
+  // Big hearts
+  for (let i = 0; i < 35; i++) {
     const heart = document.createElement("div");
 
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
+    heart.className = "celebration-heart";
+    heart.innerHTML = ["❤️", "💕", "💗", "💖", "💘"][
+      Math.floor(Math.random() * 5)
+    ];
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-    heart.style.animationDelay = Math.random() * 2 + "s";
+    heart.style.animationDelay = Math.random() * 1.5 + "s";
+    heart.style.fontSize = 18 + Math.random() * 25 + "px";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 8000);
+    setTimeout(() => heart.remove(), 5000);
   }
+
+  // Romantic sparkles ✨
+  for (let i = 0; i < 30; i++) {
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✨";
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.animationDelay = Math.random() * 1.5 + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 4000);
+  }
+
+  // Celebration message
+  const message = document.createElement("div");
+  message.className = "celebration-message";
+  message.innerHTML = "I Knew It! ❤️";
+
+  document.body.appendChild(message);
+
+  setTimeout(() => {
+    message.remove();
+  }, 1700);
 }
 
-// Background hearts ❤️
+// Background floating hearts
 setInterval(() => {
   const heart = document.createElement("div");
 
   heart.className = "heart";
-  heart.innerHTML = "💕";
+  heart.innerHTML = ["❤️", "💕", "💗"][Math.floor(Math.random() * 3)];
 
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (5 + Math.random() * 3) + "s";
+  heart.style.animationDuration = 5 + Math.random() * 3 + "s";
 
   document.body.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 8000);
+  setTimeout(() => heart.remove(), 8000);
 }, 700);
