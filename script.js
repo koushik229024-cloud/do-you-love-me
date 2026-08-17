@@ -5,17 +5,35 @@ const loveLetter = document.getElementById("loveLetter");
 
 // No button magic 😆
 noBtn.addEventListener("click", () => {
-  const margin = 20;
+  const buttonWidth = noBtn.offsetWidth;
+  const buttonHeight = noBtn.offsetHeight;
 
-  const maxX = window.innerWidth - noBtn.offsetWidth - margin;
-  const maxY = window.innerHeight - noBtn.offsetHeight - margin;
+  const minX = 20;
+  const maxX = window.innerWidth - buttonWidth - 20;
 
-  const x = margin + Math.random() * Math.max(0, maxX - margin);
-  const y = margin + Math.random() * Math.max(0, maxY - margin);
+  const minY = 20;
+  const maxY = window.innerHeight - buttonHeight - 20;
+
+  let newX;
+  let newY;
+
+  // বর্তমান অবস্থান
+  const currentX = noBtn.getBoundingClientRect().left;
+  const currentY = noBtn.getBoundingClientRect().top;
+
+  // একটু একটু করে সরবে
+  const moveDistance = 100;
+
+  newX = currentX + (Math.random() > 0.5 ? moveDistance : -moveDistance);
+  newY = currentY + (Math.random() > 0.5 ? moveDistance : -moveDistance);
+
+  // Screen-এর ভিতরে আটকে রাখবে
+  newX = Math.max(minX, Math.min(newX, maxX));
+  newY = Math.max(minY, Math.min(newY, maxY));
 
   noBtn.style.position = "fixed";
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
+  noBtn.style.left = newX + "px";
+  noBtn.style.top = newY + "px";
   noBtn.style.zIndex = "100";
 });
 // Yes ❤️
