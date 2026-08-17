@@ -5,17 +5,18 @@ const loveLetter = document.getElementById("loveLetter");
 
 // No button magic 😆
 noBtn.addEventListener("click", () => {
-  const padding = 20;
+  const margin = 20;
 
-  const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-  const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+  const maxX = window.innerWidth - noBtn.offsetWidth - margin;
+  const maxY = window.innerHeight - noBtn.offsetHeight - margin;
 
-  const x = padding + Math.random() * (maxX - padding);
-  const y = padding + Math.random() * (maxY - padding);
+  const x = margin + Math.random() * Math.max(0, maxX - margin);
+  const y = margin + Math.random() * Math.max(0, maxY - margin);
 
   noBtn.style.position = "fixed";
-  noBtn.style.left = Math.max(padding, x) + "px";
-  noBtn.style.top = Math.max(padding, y) + "px";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+  noBtn.style.zIndex = "100";
 });
 // Yes ❤️
 yesBtn.addEventListener("click", () => {
