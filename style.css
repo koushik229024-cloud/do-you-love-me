@@ -64,6 +64,7 @@ button {
   background: #ff4f81;
   color: white;
   position: relative;
+  z-index: 100;
 }
 
 button:hover {
